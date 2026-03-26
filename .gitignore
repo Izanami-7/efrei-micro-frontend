@@ -1,0 +1,43 @@
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Node dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Caches
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+
+# Editors
+.vscode/
+.idea/
+*.iml
+
+# OS / temp
+*.swp
+*.swo
+*.tmp
+
