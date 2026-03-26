@@ -7,28 +7,15 @@ function Cart() {
 
   useEffect(() => {
     const unsubscribe = eventBus.on('cart:add', (product) => {
-      setItems((prev) => [
-        ...prev,
-        {
-          ...product,
-          cartId: `${product.id}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-        },
-      ]);
+      setItems(prev => [...prev, { ...product, cartId: Date.now() }]);
     });
-    const unsubscribeCartUpdated = eventBus.on('cart:updated', () => {});
-
-    return () => {
-      unsubscribe();
-      unsubscribeCartUpdated();
-    };
+    return () => unsubscribe();
   }, []);
 
   useEffect(() => {
-    const total = items.reduce((sum, item) => sum + item.price, 0);
-
     eventBus.emit('cart:updated', {
       count: items.length,
-      total,
+      total: items.reduce((sum, item) => sum + item.price, 0),
     });
   }, [items]);
 

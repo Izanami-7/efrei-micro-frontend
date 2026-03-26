@@ -4,12 +4,21 @@ import './Navbar.css';
 
 function Navbar() {
   const [notifications, setNotifications] = useState(0);
+  const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
-    const unsub = eventBus.on('game:joined', () => {
-      setNotifications(prev => prev + 1);
+    const unsubscribeGameJoined = eventBus.on('game:joined', () => {
+      setNotifications((prev) => prev + 1);
     });
-    return () => unsub();
+
+    const unsubscribeCartUpdated = eventBus.on('cart:updated', ({ count }) => {
+      setCartCount(count);
+    });
+
+    return () => {
+      unsubscribeGameJoined();
+      unsubscribeCartUpdated();
+    };
   }, []);
 
   return (
@@ -21,12 +30,21 @@ function Navbar() {
 
       <div className="navbar-menu">
         <button className="nav-button">Lobby</button>
-        <button className="nav-button">Scores</button>
+        <button className="nav-button">Boutique</button>
       </div>
 
       <div className="navbar-user">
         <span className="username">Joueur_42</span>
+
+        {/* Icone Panier */}
+        <button className="nav-button cart-btn">
+          🛒
+          {cartCount > 0 && <span className="badge cart-badge">{cartCount}</span>}
+        </button>
+
+        {/* Icone Notifications */}
         <button className="nav-button notification-btn">
+          🔔
           {notifications > 0 && <span className="badge">{notifications}</span>}
         </button>
       </div>
