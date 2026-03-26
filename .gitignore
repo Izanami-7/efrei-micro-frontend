@@ -1,43 +1,48 @@
+### OS
 .DS_Store
 .AppleDouble
 .LSOverride
+Icon?
+._*
 
-# Node dependencies
+### Node / JS
 node_modules/
-
-# Build outputs
-dist/
-build/
-
-# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Environment files
+### Env files (secrets)
 .env
 .env.*
 !.env.example
 
-# Coverage
-coverage/
-.nyc_output/
+### Build outputs
+dist/
+build/
+out/
 
-# Caches
+### Tooling caches
 .cache/
 .parcel-cache/
 .eslintcache
 .stylelintcache
+.webpack-cache/
 
-# Editors
-.vscode/
+### Test / coverage
+coverage/
+.nyc_output/
+
+### Logs
+logs/
+*.log
+
+### Editors / IDEs
 .idea/
+.vscode/
 *.iml
 
-# OS / temp
-*.swp
-*.swo
-*.tmp
+### TypeScript (if added later)
+*.tsbuildinfo
 
