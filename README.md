@@ -38,3 +38,9 @@ shared: {
 - `npm start` démarre sans erreur
 - http://localhost:3000 affiche "Shell opérationnel"
 - Push sur `checkpoint2-[nom-equipe]`
+
+
+## Explication
+
+Le Shell est l’application principale (host) dans une architecture micro-frontend avec Module Federation.
+Son rôle est de servir de point d’entrée global, charger dynamiquement les autres applications (remotes) et partager des dépendances communes comme React pour éviter les doublons.
